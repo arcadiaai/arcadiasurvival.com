@@ -1,0 +1,13 @@
+name = "arcadia-site"
+compatibility_date = "2024-09-23"
+pages_build_output_dir = "./dist"
+
+[[kv_namespaces]]
+binding = "WAITLIST_EMAILS"
+id = "5d30dee7615149189ce13a7dc1c8feae"
+preview_id = "de0f12474497416da89bc660d9763481"
+
+[[kv_namespaces]]
+binding = "WAITLIST_RATELIMIT"
+id = "2da8336064bd4781a5a647133940544d"
+preview_id = "27a64dc6b625459bbf4cdcec59cbb49a"
