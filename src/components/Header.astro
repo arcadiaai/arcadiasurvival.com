@@ -1,0 +1,82 @@
+---
+const path = Astro.url.pathname;
+const navItems = [
+  { href: '/features', label: 'Features' },
+  { href: '/specs', label: 'Specs' },
+  { href: '/manual', label: 'Manual' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/waitlist', label: 'Waitlist', cta: true },
+];
+---
+<header>
+  <div class="bar">
+    <a href="/" class="brand">
+      <span class="mark">▲</span>
+      <span class="wordmark">ARCADIA</span>
+    </a>
+    <nav>
+      {navItems.map(({ href, label, cta }) => (
+        <a
+          href={href}
+          class:list={['nav-link', { active: path.startsWith(href), cta }]}
+        >{label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--rule);
+    background: var(--bg);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .bar {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-3) var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-5);
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    text-decoration: none;
+    color: var(--ink);
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: var(--step-1);
+    letter-spacing: 0.04em;
+  }
+  .brand .mark { color: var(--accent); }
+  nav {
+    display: flex;
+    gap: var(--space-4);
+    align-items: center;
+  }
+  .nav-link {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    text-decoration: none;
+  }
+  .nav-link:hover, .nav-link.active { color: var(--ink); }
+  .nav-link.cta {
+    color: var(--bg);
+    background: var(--warn);
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius);
+  }
+  .nav-link.cta:hover { background: var(--accent); color: var(--bg); }
+  @media (max-width: 640px) {
+    nav { gap: var(--space-3); }
+    .nav-link:not(.cta) { display: none; }
+  }
+</style>

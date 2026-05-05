@@ -1,0 +1,23 @@
+---
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+const { title, description, ogImage } = Astro.props;
+---
+<Base {title} {description} {ogImage}>
+  <Header />
+  <main>
+    <slot />
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  main { min-height: calc(100vh - 200px); }
+</style>

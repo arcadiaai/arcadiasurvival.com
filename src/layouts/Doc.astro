@@ -1,0 +1,51 @@
+---
+import '../styles/prose.css';
+import Base from './Base.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+
+interface Heading { depth: number; slug: string; text: string; }
+
+interface Props {
+  title: string;
+  description: string;
+  headings?: Heading[];
+}
+const { title, description, headings = [] } = Astro.props;
+---
+<Base {title} {description}>
+  <Header />
+  <main class="doc">
+    <aside class="toc">
+      <TableOfContents headings={headings} />
+    </aside>
+    <article class="prose">
+      <h1>{title}</h1>
+      <slot />
+    </article>
+  </main>
+  <Footer />
+</Base>
+
+<style>
+  .doc {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
+    display: grid;
+    grid-template-columns: 16rem 1fr;
+    gap: var(--space-6);
+    align-items: start;
+  }
+  .toc {
+    position: sticky;
+    top: var(--space-7);
+    max-height: calc(100vh - var(--space-8));
+    overflow-y: auto;
+  }
+  @media (max-width: 900px) {
+    .doc { grid-template-columns: 1fr; }
+    .toc { position: static; max-height: none; border-bottom: 1px solid var(--rule); padding-bottom: var(--space-3); }
+  }
+</style>
