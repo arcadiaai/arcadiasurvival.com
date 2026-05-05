@@ -1,6 +1,100 @@
 ---
 import Marketing from '../layouts/Marketing.astro';
+import SpecRow from '../components/SpecRow.astro';
+import SpecTable from '../components/SpecTable.astro';
 ---
 <Marketing title="Specs" description="Hardware, storage, power, dimensions, what's in the box.">
-  <h1>Specs — placeholder</h1>
+  <div class="page">
+    <header class="header">
+      <p class="eyebrow">SPECIFICATIONS</p>
+      <h1>What's in the box.</h1>
+    </header>
+
+    <SpecTable title="Hardware">
+      <SpecRow label="Compute" value="ARM-class AI workstation" />
+      <SpecRow label="Unified memory" value="128 GB" />
+      <SpecRow label="Storage" value="1 TB NVMe SSD (internal)" />
+      <SpecRow label="External storage" value="Optional 2 TB USB SSD for video archive" />
+      <SpecRow label="LLM throughput" value="47–54 tokens/sec (120B parameter model)" />
+      <SpecRow label="Networking" value="Wi-Fi 7, gigabit ethernet" />
+    </SpecTable>
+
+    <SpecTable title="Storage layout">
+      <SpecRow label="OS + system" value="~40 GB" />
+      <SpecRow label="Local LLM" value="~60 GB" />
+      <SpecRow label="Reference library (ZIMs)" value="~160 GB" />
+      <SpecRow label="Maps (PMTiles)" value="~120 GB" />
+      <SpecRow label="Geocoder index" value="~95 GB" />
+      <SpecRow label="ARCADIA DB + index" value="~8 GB" />
+      <SpecRow label="Translation models" value="~2.5 GB (optional)" />
+      <SpecRow label="Total (base configuration)" value="~432 GB" />
+    </SpecTable>
+
+    <SpecTable title="Network">
+      <SpecRow label="WiFi SSID" value="ARCADIA" />
+      <SpecRow label="WiFi password" value="survival" />
+      <SpecRow label="Captive portal" value="All addresses route to home page" />
+      <SpecRow label="Home reach (via uplink)" value="https://arcadia.local" />
+      <SpecRow label="Internet forwarding" value="Never. Strictly isolated." />
+    </SpecTable>
+
+    <SpecTable title="Power & physical">
+      <SpecRow label="Power input" value="Standard wall AC; 100–150 W typical" />
+      <SpecRow label="Inverter compatible" value="Yes — runs from small solar setups" />
+      <SpecRow label="Cooling" value="Fanless" />
+      <SpecRow label="Weight (shipped, full kit)" value="35 lb" />
+      <SpecRow label="Form factor" value="Compact desktop" />
+    </SpecTable>
+
+    <section class="box">
+      <h2>What's in the box</h2>
+      <p class="kit-lede">
+        ARCADIA ships as a complete grab-and-go kit, packed in a waterproof
+        hard-shell case with custom foam cutouts. Total kit weight: 35 lb.
+      </p>
+      <ul>
+        <li><strong>ARCADIA appliance</strong> — pre-imaged and pre-loaded</li>
+        <li><strong>Waterproof hard-shell case</strong> with custom foam cutouts for every component</li>
+        <li><strong>USB speaker/microphone puck</strong> for hands-free voice</li>
+        <li><strong>USB-C expansion hub</strong></li>
+        <li><strong>256 GB USB flash drive</strong> for offline transfers and backups</li>
+        <li><strong>EcoFlow River 3</strong> portable power station — runs the unit for hours unplugged <em>(included free)</em></li>
+        <li><strong>100 W foldable solar panel</strong> — recharge the River 3 indefinitely from the sun <em>(included free)</em></li>
+        <li>Power cord (region-specific)</li>
+        <li>Quickstart card and printed manual</li>
+        <li>License card with per-unit credentials for software updates</li>
+      </ul>
+      <p class="kit-foot">
+        Everything fits in the carrying case. Plug into wall power, generator,
+        the included River 3, or any 100–150 W source. With the bundled solar
+        panel and battery, the kit is fully self-sufficient.
+      </p>
+    </section>
+  </div>
 </Marketing>
+
+<style>
+  .page { max-width: var(--container); margin: 0 auto; padding: var(--space-7) var(--space-4); display: flex; flex-direction: column; gap: var(--space-5); }
+  .header { margin-bottom: var(--space-4); }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+  }
+  h1 { font-size: var(--step-4); }
+  .box { border: 1px solid var(--rule); padding: var(--space-5); }
+  .box h2 { font-size: var(--step-2); margin-bottom: var(--space-3); }
+  .box ul { padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-2); }
+  .box li { font-family: var(--serif); font-size: var(--step-1); }
+  .box .kit-lede,
+  .box .kit-foot {
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    line-height: 1.6;
+    color: var(--ink-muted);
+    margin: var(--space-3) 0;
+  }
+</style>

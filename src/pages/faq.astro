@@ -1,6 +1,47 @@
 ---
+import { getCollection, render } from 'astro:content';
 import Doc from '../layouts/Doc.astro';
+import Accordion from '../components/Accordion.astro';
+import AccordionItem from '../components/AccordionItem.astro';
+
+const all = await getCollection('faq');
+const groups = ['general', 'hardware', 'usage', 'shipping', 'support'] as const;
+const labels: Record<typeof groups[number], string> = {
+  general: 'General',
+  hardware: 'Hardware',
+  usage: 'Using ARCADIA',
+  shipping: 'Shipping & purchase',
+  support: 'Support & updates',
+};
+
+const grouped = groups.map(g => ({
+  key: g,
+  label: labels[g],
+  items: all
+    .filter(e => e.data.category === g)
+    .sort((a, b) => a.data.order - b.data.order),
+}));
+
+const renderedGroups = await Promise.all(
+  grouped.map(async (g) => ({
+    ...g,
+    rendered: await Promise.all(
+      g.items.map(async (item) => {
+        const { Content } = await render(item);
+        return { question: item.data.question, Content };
+      }),
+    ),
+  })),
+);
 ---
-<Doc title="FAQ" description="Common questions about ARCADIA.">
-  <h2>FAQ — placeholder</h2>
+<Doc title="FAQ" description="Frequently asked questions about ARCADIA." headings={[]}>
+  {renderedGroups.map(g => g.rendered.length > 0 && (
+    <Accordion heading={g.label}>
+      {g.rendered.map(({ question, Content }) => (
+        <AccordionItem question={question}>
+          <Content />
+        </AccordionItem>
+      ))}
+    </Accordion>
+  ))}
 </Doc>

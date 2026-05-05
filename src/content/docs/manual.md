@@ -5,11 +5,24 @@ description: Full user-facing reference for ARCADIA features.
 
 ## Hardware overview
 
-ARCADIA ships as a single, fanless AI workstation:
+ARCADIA ships as a complete grab-and-go kit, packed in a waterproof hard-shell case with custom foam cutouts. Total kit weight: 35 lb.
+
+The kit includes:
+
+- The ARCADIA appliance — small, fanless, 128 GB unified memory, 1 TB NVMe SSD
+- Waterproof hard-shell carrying case
+- USB speaker/microphone puck (hands-free voice)
+- USB-C expansion hub
+- 256 GB USB flash drive
+- **EcoFlow River 3** portable power station (free) — runs the unit for hours unplugged
+- **100 W foldable solar panel** (free) — recharge the River 3 indefinitely from sun
+- Power cord, quickstart card, printed manual, license card
+
+Performance and runtime:
 
 - 47–54 tokens/sec on the local language model
 - 1 TB internal NVMe SSD; optional external storage for video
-- Standard wall power; works on a generator or inverter
+- 100–150 W typical draw; runs on wall power, generator, the included River 3, or any compatible inverter
 - Creates its own LAN — no router required
 
 ## Connecting

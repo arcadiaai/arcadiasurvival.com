@@ -1,6 +1,45 @@
 ---
+import { getCollection } from 'astro:content';
 import Marketing from '../../layouts/Marketing.astro';
+import PostCard from '../../components/PostCard.astro';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
-<Marketing title="Blog" description="Field reports, build notes, and current-events context.">
-  <h1>Blog — placeholder</h1>
+<Marketing title="Blog" description="Field reports, build notes, current-events context.">
+  <div class="page">
+    <header>
+      <p class="eyebrow">BLOG</p>
+      <h1>Field notes.</h1>
+    </header>
+    <div class="grid">
+      {posts.map(p => (
+        <PostCard
+          title={p.data.title}
+          date={p.data.date}
+          excerpt={p.data.excerpt}
+          href={`/blog/${p.data.slug}`}
+        />
+      ))}
+    </div>
+  </div>
 </Marketing>
+
+<style>
+  .page { max-width: var(--container); margin: 0 auto; padding: var(--space-7) var(--space-4); }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+  }
+  h1 { font-size: var(--step-4); margin-bottom: var(--space-6); }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-4);
+  }
+  @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+</style>

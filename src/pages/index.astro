@@ -1,10 +1,44 @@
 ---
 import Marketing from '../layouts/Marketing.astro';
+import Hero from '../components/Hero.astro';
+import FeatureGrid from '../components/FeatureGrid.astro';
+import UseCaseStrip from '../components/UseCaseStrip.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
 ---
 <Marketing
   title="Offline survival knowledge"
   description="ARCADIA is an offline-first AI knowledge appliance for emergency preparedness, off-grid living, and disaster response."
 >
-  <h1>Home — placeholder</h1>
-  <p>Hero, feature grid, use-case strip, waitlist CTA go here.</p>
+  <Hero />
+  <section class="container intro">
+    <h2>What it is</h2>
+    <p>
+      ARCADIA is a small, fanless AI workstation pre-loaded with hundreds of
+      gigabytes of survival, medical, agricultural, and reference material —
+      plus a private language model that runs locally and answers questions
+      with citations from the on-device library.
+    </p>
+    <p>
+      It creates its own private WiFi. Any phone, tablet, or laptop in the
+      house joins it without an account, without an app, without internet.
+      Everyone uses it at once.
+    </p>
+  </section>
+
+  <FeatureGrid />
+  <UseCaseStrip />
+
+  <section class="container cta">
+    <h2>Be first to know when it ships</h2>
+    <WaitlistForm source="footer" />
+  </section>
 </Marketing>
+
+<style>
+  .container { max-width: var(--measure); margin: 0 auto; padding: 0 var(--space-4); }
+  .intro { padding-top: var(--space-6); padding-bottom: var(--space-6); }
+  .intro p { font-family: var(--serif); font-size: var(--step-1); line-height: 1.6; margin-top: var(--space-3); color: var(--ink-muted); }
+  .cta { padding: var(--space-7) var(--space-4); text-align: center; }
+  .cta h2 { margin-bottom: var(--space-4); }
+  .cta :global(.waitlist) { margin: 0 auto; }
+</style>

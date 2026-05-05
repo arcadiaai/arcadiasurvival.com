@@ -1,10 +1,31 @@
 ---
-import Marketing from '../../layouts/Marketing.astro';
+import { getCollection, render } from 'astro:content';
+import Doc from '../../layouts/Doc.astro';
 
 export async function getStaticPaths() {
-  return [{ params: { slug: 'placeholder' } }];
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  return posts.map(post => ({
+    params: { slug: post.data.slug },
+    props: { post },
+  }));
 }
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+const dateStr = post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 ---
-<Marketing title="Blog post" description="A blog post.">
-  <h1>Blog post — placeholder</h1>
-</Marketing>
+<Doc title={post.data.title} description={post.data.excerpt} headings={headings}>
+  <p class="meta">{dateStr} · by {post.data.author}</p>
+  <Content />
+  <p class="back"><a href="/blog">← Back to blog</a></p>
+</Doc>
+
+<style>
+  .meta {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--ink-muted);
+    margin-bottom: var(--space-3);
+  }
+  .back { margin-top: var(--space-7); }
+</style>

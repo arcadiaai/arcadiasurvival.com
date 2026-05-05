@@ -1,6 +1,68 @@
 ---
 import Doc from '../layouts/Doc.astro';
 ---
-<Doc title="Legal & privacy" description="Open-source attribution, warranty, and privacy notice.">
-  <h2>Legal — placeholder</h2>
+<Doc title="Legal & privacy" description="Open-source attribution, warranty, and privacy notice." headings={[
+  { depth: 2, slug: 'privacy', text: 'Privacy' },
+  { depth: 2, slug: 'oss', text: 'Open-source attribution' },
+  { depth: 2, slug: 'warranty', text: 'Hardware warranty' },
+  { depth: 2, slug: 'terms', text: 'Terms of use' },
+]}>
+  <h2 id="privacy">Privacy</h2>
+  <p>
+    The ARCADIA appliance itself collects no telemetry, no analytics, and no
+    conversation history. The only network traffic the unit ever generates
+    is a daily software-update check that sends a per-unit license token over
+    HTTPS and downloads signed update artifacts.
+  </p>
+  <p>
+    The waitlist on this website stores: your lowercased email, the source
+    page, an ISO timestamp, the two-letter country code your request came
+    from, and a salted hash of your IP and User-Agent (used for abuse
+    detection, not identification). It does not store your name, real IP,
+    user-agent, referrer, or any tracking ID. There are no third-party
+    trackers on this site.
+  </p>
+  <p>
+    To request deletion of your waitlist entry, email
+    <a href="mailto:hello@arcadiasurvival.com">hello@arcadiasurvival.com</a>.
+  </p>
+
+  <h2 id="oss">Open-source attribution</h2>
+  <p>ARCADIA is built on the work of many open communities. Major components and licenses:</p>
+  <table>
+    <thead><tr><th>Component</th><th>License</th><th>Project</th></tr></thead>
+    <tbody>
+      <tr><td>Wikipedia / Wikivoyage / Wikibooks</td><td>CC-BY-SA</td><td>Wikimedia Foundation</td></tr>
+      <tr><td>Kiwix</td><td>GPL-3.0</td><td>Kiwix.org</td></tr>
+      <tr><td>OpenStreetMap data</td><td>ODbL</td><td>OpenStreetMap contributors</td></tr>
+      <tr><td>Photon geocoder</td><td>Apache-2.0</td><td>Komoot</td></tr>
+      <tr><td>Argos Translate</td><td>MIT / CC-BY-SA</td><td>Argos Open Tech</td></tr>
+      <tr><td>Piper TTS voices</td><td>MIT (per voice — see voices manifest)</td><td>Piper</td></tr>
+      <tr><td>llama.cpp</td><td>MIT</td><td>ggerganov / contributors</td></tr>
+      <tr><td>Astro</td><td>MIT</td><td>Astro</td></tr>
+    </tbody>
+  </table>
+  <p>
+    Optional content packs (Khan Academy, Plants For A Future) carry their
+    own licenses and are user-installed; ARCADIA does not redistribute them.
+    Per-pack license details are shown when you install each pack on the unit.
+  </p>
+
+  <h2 id="warranty">Hardware warranty</h2>
+  <p>
+    Each ARCADIA unit ships with a one-year hardware warranty covering
+    manufacturing defects in the appliance. Software updates and content
+    refreshes are included for the life of the unit at no additional cost.
+    Bundled accessories (EcoFlow River 3, foldable solar panel, hard-shell
+    case, USB peripherals) are covered by their manufacturers' warranties;
+    full terms ship in the box with each unit.
+  </p>
+
+  <h2 id="terms">Terms of use</h2>
+  <p>
+    By visiting this site you agree that the content here is provided as-is,
+    for informational purposes. ARCADIA is a tool; medical, legal, or
+    survival decisions you make are yours. Always seek qualified professional
+    help when one is available.
+  </p>
 </Doc>

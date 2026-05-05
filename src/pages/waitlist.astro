@@ -1,6 +1,44 @@
 ---
 import Marketing from '../layouts/Marketing.astro';
+import WaitlistForm from '../components/WaitlistForm.astro';
 ---
 <Marketing title="Waitlist" description="Be first to know when ARCADIA ships.">
-  <h1>Waitlist — placeholder</h1>
+  <div class="page">
+    <p class="eyebrow">WAITLIST</p>
+    <h1>Be first to know when ARCADIA ships.</h1>
+    <p class="lede">
+      Drop your email below. We'll write only when there's something real to
+      say — pre-order opens, ship dates, and field reports from alpha units.
+      No spam, no marketing automation drips, no list-rental.
+    </p>
+
+    <WaitlistForm source="waitlist" />
+
+    <section class="next">
+      <h2>What happens next</h2>
+      <ol>
+        <li><strong>Now</strong> — your email lands in our list. That's it.</li>
+        <li><strong>When pre-orders open</strong> — you get an email with a link to reserve a unit.</li>
+        <li><strong>When your unit ships</strong> — we send tracking. The unit arrives pre-loaded; you plug it in and you're running.</li>
+      </ol>
+    </section>
+  </div>
 </Marketing>
+
+<style>
+  .page { max-width: var(--measure); margin: 0 auto; padding: var(--space-7) var(--space-4); }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    margin-bottom: var(--space-3);
+  }
+  h1 { font-size: var(--step-4); margin-bottom: var(--space-4); }
+  .lede { font-family: var(--serif); font-size: var(--step-1); line-height: 1.6; color: var(--ink-muted); margin-bottom: var(--space-6); }
+  .next { margin-top: var(--space-7); padding-top: var(--space-5); border-top: 1px solid var(--rule); }
+  .next h2 { font-size: var(--step-2); margin-bottom: var(--space-3); }
+  .next ol { padding-left: var(--space-5); display: flex; flex-direction: column; gap: var(--space-3); }
+  .next li { font-family: var(--serif); font-size: var(--step-1); line-height: 1.6; }
+</style>

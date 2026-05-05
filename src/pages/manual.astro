@@ -1,7 +1,11 @@
 ---
+import { getEntry, render } from 'astro:content';
 import Doc from '../layouts/Doc.astro';
+
+const entry = await getEntry('docs', 'manual');
+if (!entry) throw new Error('Missing docs/manual entry');
+const { Content, headings } = await render(entry);
 ---
-<Doc title="Manual" description="Full user-facing reference for ARCADIA features.">
-  <h2>Manual — placeholder</h2>
-  <p>Real content wired from content collection in Phase 7.</p>
+<Doc title={entry.data.title} description={entry.data.description} headings={headings}>
+  <Content />
 </Doc>

@@ -10,7 +10,7 @@ const ROUTES = [
   '/faq',
   '/legal',
   '/blog',
-  '/blog/placeholder',
+  '/blog/hello-arcadia',
   '/thank-you',
   '/404',
 ];
