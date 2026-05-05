@@ -5,9 +5,7 @@ import cloudflare from '@astrojs/cloudflare';
 export default defineConfig({
   site: 'https://arcadiasurvival.com',
   output: 'static',
-  adapter: cloudflare({
-    platformProxy: { enabled: true },
-  }),
+  adapter: cloudflare(),
   trailingSlash: 'never',
   build: { format: 'file' },
 });

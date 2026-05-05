@@ -155,3 +155,8 @@ dist/
 
 # Astro env
 .env.production
+
+# Playwright
+test-results/
+playwright-report/
+.playwright/
