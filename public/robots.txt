@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://arcadiasurvival.com/sitemap-index.xml
