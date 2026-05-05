@@ -160,3 +160,6 @@ dist/
 test-results/
 playwright-report/
 .playwright/
+
+# Wrangler local state
+.wrangler/
