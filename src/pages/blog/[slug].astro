@@ -1,0 +1,10 @@
+---
+import Marketing from '../../layouts/Marketing.astro';
+
+export async function getStaticPaths() {
+  return [{ params: { slug: 'placeholder' } }];
+}
+---
+<Marketing title="Blog post" description="A blog post.">
+  <h1>Blog post — placeholder</h1>
+</Marketing>
