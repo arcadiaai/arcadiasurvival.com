@@ -1,0 +1,28 @@
+---
+import FeatureCard from './FeatureCard.astro';
+
+const features = [
+  { icon: '🤖', title: 'Local AI', body: 'GPT-OSS-120B running natively on the appliance. No cloud, no API keys, no metering.' },
+  { icon: '📚', title: '160 GB of Wikipedia + reference', body: 'Wikipedia, Wikivoyage, Wikibooks, Wiktionary, Project Gutenberg, military and medical manuals.' },
+  { icon: '🗺️', title: 'Planet-scale offline maps', body: '120 GB of OpenStreetMap PMTiles plus a Photon geocoder. Search any address worldwide, offline.' },
+  { icon: '🎤', title: 'Hands-free voice', body: 'Speak questions, hear answers — Piper TTS plus a USB speaker puck. Works in a power outage.' },
+];
+---
+<section class="grid">
+  {features.map(f => (
+    <FeatureCard title={f.title} icon={f.icon}>{f.body}</FeatureCard>
+  ))}
+</section>
+
+<style>
+  .grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: var(--space-6) var(--space-4);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-4);
+  }
+  @media (max-width: 900px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .grid { grid-template-columns: 1fr; } }
+</style>

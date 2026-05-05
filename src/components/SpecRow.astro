@@ -1,0 +1,33 @@
+---
+interface Props { label: string; value: string; }
+const { label, value } = Astro.props;
+---
+<div class="row">
+  <span class="label">{label}</span>
+  <span class="rule"></span>
+  <span class="value">{value}</span>
+</div>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: 14rem 1fr auto;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) 0;
+    border-bottom: 1px solid var(--rule);
+    font-family: var(--mono);
+  }
+  .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+  }
+  .rule { border-top: 1px dashed var(--rule); }
+  .value { font-size: 0.95rem; color: var(--ink); font-weight: 500; }
+  @media (max-width: 600px) {
+    .row { grid-template-columns: 1fr auto; }
+    .rule { display: none; }
+  }
+</style>

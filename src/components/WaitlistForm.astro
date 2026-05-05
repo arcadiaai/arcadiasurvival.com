@@ -1,0 +1,104 @@
+---
+interface Props { source: 'home' | 'waitlist' | 'footer'; compact?: boolean; }
+const { source, compact = false } = Astro.props;
+---
+<form class:list={['waitlist', { compact }]} action="/api/waitlist" method="post">
+  <input type="hidden" name="source" value={source} />
+  <input type="text" name="hp_company" tabindex="-1" autocomplete="off" aria-hidden="true" class="honeypot" />
+  <label class="visually-hidden" for={`email-${source}`}>Email address</label>
+  <input
+    id={`email-${source}`}
+    type="email"
+    name="email"
+    placeholder="you@example.com"
+    autocomplete="email"
+    required
+    maxlength="254"
+  />
+  <button type="submit">Get on the list</button>
+  <p class="note">No spam. We email when there's something real to say.</p>
+</form>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form.waitlist').forEach((form) => {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const button = form.querySelector('button')!;
+      const original = button.textContent;
+      button.disabled = true;
+      button.textContent = 'Saving…';
+
+      try {
+        const fd = new FormData(form);
+        const payload = Object.fromEntries(fd.entries());
+        const res = await fetch('/api/waitlist', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        if (res.ok) {
+          window.location.href = '/thank-you';
+          return;
+        }
+        if (res.status === 429) {
+          alert('Too many tries — wait a few minutes and try again.');
+        } else {
+          alert(`Couldn't save your email. Please try again. (${res.status})`);
+        }
+      } catch {
+        alert('Network error. Please try again.');
+      } finally {
+        button.disabled = false;
+        button.textContent = original;
+      }
+    });
+  });
+</script>
+
+<style>
+  .waitlist {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: var(--space-2);
+    max-width: 32rem;
+  }
+  .waitlist input[type="email"] {
+    padding: var(--space-3);
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    font-size: var(--step-0);
+    border-radius: var(--radius);
+  }
+  .waitlist button {
+    padding: var(--space-3) var(--space-4);
+    background: var(--warn);
+    color: var(--bg);
+    border: 0;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    border-radius: var(--radius);
+  }
+  .waitlist button:hover { background: var(--accent); }
+  .waitlist button:disabled { opacity: 0.6; cursor: not-allowed; }
+  .note {
+    grid-column: 1 / -1;
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--ink-muted);
+    margin-top: var(--space-1);
+  }
+  .honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+  .visually-hidden { position: absolute; left: -9999px; }
+  @media (max-width: 600px) {
+    .waitlist { grid-template-columns: 1fr; }
+  }
+</style>

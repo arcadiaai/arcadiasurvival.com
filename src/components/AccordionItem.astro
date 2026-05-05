@@ -1,0 +1,26 @@
+---
+interface Props { question: string; }
+const { question } = Astro.props;
+---
+<details class="item">
+  <summary>{question}</summary>
+  <div class="body"><slot /></div>
+</details>
+
+<style>
+  .item { border-bottom: 1px solid var(--rule); }
+  summary {
+    padding: var(--space-3) 0;
+    font-family: var(--serif);
+    font-size: var(--step-1);
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  summary::after { content: '+'; font-family: var(--mono); color: var(--ink-muted); }
+  .item[open] summary::after { content: '−'; }
+  .body { padding: 0 0 var(--space-4); color: var(--ink-muted); line-height: 1.6; }
+  .body :global(p) { font-family: var(--serif); }
+</style>

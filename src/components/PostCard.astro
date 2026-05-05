@@ -1,0 +1,40 @@
+---
+interface Props { title: string; date: Date; excerpt: string; href: string; }
+const { title, date, excerpt, href } = Astro.props;
+const dateStr = date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+<a class="card" href={href}>
+  <p class="date">{dateStr}</p>
+  <h3>{title}</h3>
+  <p class="excerpt">{excerpt}</p>
+  <p class="more">Read →</p>
+</a>
+
+<style>
+  .card {
+    display: block;
+    padding: var(--space-4);
+    border: 1px solid var(--rule);
+    background: var(--bg);
+    text-decoration: none;
+    color: var(--ink);
+    transition: background 0.15s;
+  }
+  .card:hover { background: var(--bg-alt); }
+  .date {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--ink-muted);
+    margin-bottom: var(--space-2);
+  }
+  h3 { font-size: var(--step-2); margin-bottom: var(--space-2); }
+  .excerpt { font-family: var(--serif); color: var(--ink-muted); line-height: 1.5; }
+  .more {
+    margin-top: var(--space-3);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--accent);
+  }
+</style>
