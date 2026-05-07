@@ -56,7 +56,7 @@ The library by category — including military manuals, medical references, plan
 
 ### Maps
 
-OpenStreetMap-derived planet tiles plus a Photon geocoder. Search any address worldwide, offline. Pan, zoom, drop pins.
+Planet-scale offline map tiles with built-in address search. Find any address worldwide, offline. Pan, zoom, drop pins.
 
 ### Voice
 
@@ -70,9 +70,9 @@ Curated video instruction with on-device transcripts.
 
 After installing the base unit, you can add:
 
-- **Translate** — 24 language pairs, on-device translation
-- **Khan Academy** — full offline course library
-- **Plants For A Future** — herb and edible plant database
+- **Translate** — on-device translation for major world languages
+- **Educational courses** — full offline course library
+- **Plant database** — herbs and edible plants with image search
 - **Aviation & Maritime** — approach plates, charts, manuals
 
 Install via the Settings page when an internet uplink is connected. The packs are large (multi-GB); plan accordingly.
