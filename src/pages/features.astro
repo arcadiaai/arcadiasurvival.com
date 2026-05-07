@@ -6,11 +6,11 @@ const sections = [
   { id: 'llm', title: 'Local AI', body: "A 120B-parameter LLM running natively on the appliance with 47–54 tokens/sec throughput. Eight domain agents (Survival, Medical, Agriculture, Technical, Civics, Comms, Navigation, Security) route your question to the right knowledge base. No cloud, no API keys, no metering." },
   { id: 'kiwix', title: 'Over 160 GB of archives', body: 'Encyclopedias, reference books, military and medical manuals, agricultural extension guides, plant identification — all searchable and offline.' },
   { id: 'maps', title: 'Planet-scale offline maps', body: '120 GB of offline map data with built-in address search. Find any address in any country and drop pins to mark places — all offline.' },
-  { id: 'kolibri', title: 'Educational courses (Optional User Install)', body: 'Install the educational pack to ship a full offline course library with progress tracking per device. Kids keep studying when the internet is out.' },
+  { id: 'kolibri', title: 'Educational courses', optional: true, body: 'Install the educational pack to ship a full offline course library with progress tracking per device. Kids keep studying when the internet is out.' },
   { id: 'voice', title: 'Hands-free voice', body: 'Browser-based: tap the microphone, speak, hear ARCADIA respond out loud through the optional USB speaker puck. Eight TTS voice options.' },
-  { id: 'translate', title: 'Translation (Optional User Install)', body: 'On-device translation models for major world languages. Translate documents, search results, or speech — running locally.' },
+  { id: 'translate', title: 'Translation', optional: true, body: 'On-device translation models for major world languages. Translate documents, search results, or speech — running locally.' },
   { id: 'aviation', title: 'Aviation and maritime', body: 'FAA approach plates, sectional charts, NOAA marine charts, and aviation reference manuals — searchable, browsable, offline.' },
-  { id: 'plants', title: 'Plant identification and homestead (Optional User Install)', body: 'Edible plant database, herb references, and identification guides with image-search support.' },
+  { id: 'plants', title: 'Plant identification and homestead', optional: true, body: 'Edible plant database, herb references, and identification guides with image-search support.' },
 ];
 ---
 <Marketing title="Features" description="Eight knowledge domains served from one appliance.">
@@ -24,6 +24,7 @@ const sections = [
       <section id={s.id} class:list={['section', { reversed: i % 2 === 1 }]}>
         <div class="text">
           <h2>{s.title}</h2>
+          {s.optional && <p class="optional">(Optional User Install)</p>}
           <p>{s.body}</p>
         </div>
         <div class="visual">
@@ -58,6 +59,9 @@ const sections = [
   .section.reversed .text { order: 2; }
   .text h2 { font-size: var(--step-3); margin-bottom: var(--space-3); }
   .text p { font-family: var(--serif); font-size: var(--step-1); line-height: 1.6; color: var(--ink-muted); }
+  .text .optional {
+    margin-bottom: var(--space-3);
+  }
   @media (max-width: 800px) {
     .section, .section.reversed { grid-template-columns: 1fr; }
     .section.reversed .text { order: 0; }
