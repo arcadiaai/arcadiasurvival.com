@@ -9,19 +9,16 @@ const { title } = Astro.props;
 
 <style>
   .table {
-    background: var(--tech-bg);
-    color: var(--tech-fg);
+    border: 1px solid var(--rule);
     padding: var(--space-5);
     border-radius: var(--radius);
   }
-  .table :global(.row) { border-color: rgba(245,241,232,0.2); }
-  .table :global(.label), .table :global(.value) { color: var(--tech-fg); }
   .table h3 {
     font-family: var(--mono);
     font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.12em;
-    color: var(--warn);
+    color: var(--accent);
     margin-bottom: var(--space-3);
   }
 </style>

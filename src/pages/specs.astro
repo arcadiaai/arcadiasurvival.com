@@ -10,13 +10,39 @@ import SpecTable from '../components/SpecTable.astro';
       <h1>What's in the box.</h1>
     </header>
 
+    <section class="box">
+      <h2>What's in the box</h2>
+      <p class="kit-lede">
+        ARCADIA ships as a complete grab-and-go kit, packed in a waterproof
+        hard-shell case with custom foam cutouts.<br />
+        Total kit weight: 35 lb.
+      </p>
+      <ul>
+        <li><strong>ARCADIA appliance</strong> — pre-imaged and pre-loaded</li>
+        <li><strong>Waterproof hard-shell case</strong> with custom foam cutouts for every component</li>
+        <li><strong>USB speaker/microphone puck</strong> for hands-free voice</li>
+        <li><strong>USB-C expansion hub</strong></li>
+        <li><strong>256 GB USB flash drive</strong> for offline transfers and backups</li>
+        <li><strong>EcoFlow River 3</strong> portable power station — runs the unit for hours unplugged <em>(included free)</em></li>
+        <li><strong>100 W foldable solar panel</strong> — recharge the River 3 indefinitely from the sun <em>(included free)</em></li>
+        <li>Power cord (region-specific)</li>
+        <li>Quickstart card and printed manual</li>
+        <li>License card with per-unit credentials for software updates</li>
+      </ul>
+      <p class="kit-foot">
+        Everything fits in the carrying case. Plug into wall power, generator,
+        the included River 3, or any 100–150 W source. With the bundled solar
+        panel and battery, the kit is fully self-sufficient.
+      </p>
+    </section>
+
     <SpecTable title="Hardware">
       <SpecRow label="Compute" value="ARM-class AI workstation" />
       <SpecRow label="Unified memory" value="128 GB" />
       <SpecRow label="Storage" value="1 TB NVMe SSD (internal)" />
-      <SpecRow label="External storage" value="Optional 2 TB USB SSD for video archive" />
       <SpecRow label="LLM throughput" value="47–54 tokens/sec (120B parameter model)" />
       <SpecRow label="Networking" value="Wi-Fi 7, gigabit ethernet" />
+      <SpecRow label="External storage" value="Optional USB SSD for video archive" />
     </SpecTable>
 
     <SpecTable title="Storage layout">
@@ -40,36 +66,9 @@ import SpecTable from '../components/SpecTable.astro';
 
     <SpecTable title="Power & physical">
       <SpecRow label="Power input" value="Standard wall AC; 100–150 W typical" />
-      <SpecRow label="Inverter compatible" value="Yes — runs from small solar setups" />
       <SpecRow label="Cooling" value="Fanless" />
       <SpecRow label="Weight (shipped, full kit)" value="35 lb" />
-      <SpecRow label="Form factor" value="Compact desktop" />
     </SpecTable>
-
-    <section class="box">
-      <h2>What's in the box</h2>
-      <p class="kit-lede">
-        ARCADIA ships as a complete grab-and-go kit, packed in a waterproof
-        hard-shell case with custom foam cutouts. Total kit weight: 35 lb.
-      </p>
-      <ul>
-        <li><strong>ARCADIA appliance</strong> — pre-imaged and pre-loaded</li>
-        <li><strong>Waterproof hard-shell case</strong> with custom foam cutouts for every component</li>
-        <li><strong>USB speaker/microphone puck</strong> for hands-free voice</li>
-        <li><strong>USB-C expansion hub</strong></li>
-        <li><strong>256 GB USB flash drive</strong> for offline transfers and backups</li>
-        <li><strong>EcoFlow River 3</strong> portable power station — runs the unit for hours unplugged <em>(included free)</em></li>
-        <li><strong>100 W foldable solar panel</strong> — recharge the River 3 indefinitely from the sun <em>(included free)</em></li>
-        <li>Power cord (region-specific)</li>
-        <li>Quickstart card and printed manual</li>
-        <li>License card with per-unit credentials for software updates</li>
-      </ul>
-      <p class="kit-foot">
-        Everything fits in the carrying case. Plug into wall power, generator,
-        the included River 3, or any 100–150 W source. With the bundled solar
-        panel and battery, the kit is fully self-sufficient.
-      </p>
-    </section>
   </div>
 </Marketing>
 
