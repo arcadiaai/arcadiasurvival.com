@@ -3,8 +3,9 @@ import Marketing from '../layouts/Marketing.astro';
 import PlaceholderImage from '../components/PlaceholderImage.astro';
 
 const sections = [
-  { id: 'llm', title: 'Local AI', body: "A 120B-parameter LLM running natively on the appliance with 47–54 tokens/sec throughput. Eight domain agents (Survival, Medical, Agriculture, Technical, Civics, Comms, Navigation, Security) route your question to the right knowledge base. No cloud, no API keys, no metering." },
-  { id: 'kiwix', title: 'Over 160 GB of archives', body: 'Encyclopedias, reference books, military and medical manuals, agricultural extension guides, plant identification — all searchable and offline. Users can also add their own documents and have them indexed so the local AI can reference them in answers.' },
+  { id: 'llm', title: 'Local AI', body: "A 35B Mixture-of-Experts AI model running natively on the appliance with 80–85 tokens/sec throughput. Eight domain agents (Survival, Medical, Agriculture, Technical, Civics, Comms, Navigation, Security) route your question to the right knowledge base. No cloud, no API keys, no metering." },
+  { id: 'kiwix', title: 'Over 160 GB of archives', body: 'Encyclopedias, reference books, military and medical manuals, agricultural extension guides, plant identification — all searchable and offline.' },
+  { id: 'add-docs', title: 'Bring your own documents', body: 'Upload PDFs, text files, or paste a URL and ARCADIA fetches and indexes it. Your documents are auto-categorized, approved by you, and then referenced by the AI alongside the built-in library. A nightly reindex keeps everything current automatically.' },
   { id: 'maps', title: 'Planet-scale offline maps', body: '120 GB of offline map data with built-in address search. Find any address in any country and drop pins to mark places — all offline.' },
   { id: 'kolibri', title: 'Educational courses', optional: true, body: 'Install the educational pack to ship a full offline course library with progress tracking per device. Kids keep studying when the internet is out.' },
   { id: 'voice', title: 'Hands-free voice', body: 'Browser-based: tap the microphone, speak, hear ARCADIA respond out loud through the optional USB speaker puck. Eight TTS voice options.' },
